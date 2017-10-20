@@ -8,7 +8,7 @@ public class Device {
     private int hearthRate;
     private String deviceName;
 
-    private Device(int hearthRate, String deviceName) {
+    public Device(int hearthRate, String deviceName) {
         this.hearthRate = hearthRate;
         this.deviceName = deviceName;
     }
