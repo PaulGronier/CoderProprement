@@ -17,13 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private Button btnConnect;
     private Button btnDetail;
     private TextView textView;
-    private Device device;
+    private SingletonButton manager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        manager = Application.application().getManager();
         initButtons();
 
 
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //textView.setText(SingletonButton.getInstance().getData());
-                SingletonButton.getInstance().connect(device);
-                textView.setText(SingletonButton.getInstance().getName());
+                manager.getInstance().connect(new Device(42, "OnePlus"));
+                textView.setText(manager.getName());
 
             }
         });
