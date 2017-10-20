@@ -7,27 +7,32 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.iem.coderproprement.R;
-import com.example.iem.coderproprement.manager.SingletonButton;
+import com.example.iem.coderproprement.manager.DataManager;
+import com.example.iem.coderproprement.manager.DataManagerInterface;
 
 /**
  * Created by iem on 20/10/2017.
  */
 
 public class DetailActivity extends AppCompatActivity {
-
+    DataManagerInterface manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_layout);
-
+        initManager();
         Button btnRate = (Button) findViewById(R.id.buttonRate);
         final TextView textView = (TextView)findViewById(R.id.text2);
         btnRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(SingletonButton.getInstance().getData());
-                SingletonButton.getInstance();
+                textView.setText(manager.getRate());
+
             }
         });
+    }
+
+    private void initManager (){
+        manager = Application.application().getManager();
     }
 }

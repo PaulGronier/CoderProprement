@@ -5,20 +5,9 @@ import com.example.iem.coderproprement.objects.Device;
 /**
  * Created by iem on 20/10/2017.
  */
-public class SingletonButton {
+public class DataManager implements DataManagerInterface{
 
-
-    private SingletonButton(){}
-
-    private static SingletonButton INSTANCE;
     Device device;
-
-    public static SingletonButton getInstance() {
-        if (INSTANCE == null){
-            INSTANCE = new SingletonButton();
-        }
-        return INSTANCE;
-    }
 
     public String getData() {
         return "Hola";

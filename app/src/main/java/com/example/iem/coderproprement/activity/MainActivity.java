@@ -8,26 +8,28 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.iem.coderproprement.R;
-import com.example.iem.coderproprement.manager.SingletonButton;
+import com.example.iem.coderproprement.manager.DataManager;
+import com.example.iem.coderproprement.manager.DataManagerInterface;
 import com.example.iem.coderproprement.objects.Device;
-
-import static android.R.attr.value;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnConnect;
     private Button btnDetail;
     private TextView textView;
-    private SingletonButton manager;
+    private DataManagerInterface manager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        manager = Application.application().getManager();
+
+        initManager();
         initButtons();
+    }
 
-
+    private void initManager (){
+        manager = Application.application().getManager();
     }
 
     private void initButtons() {
@@ -37,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //textView.setText(SingletonButton.getInstance().getData());
-                manager.getInstance().connect(new Device(42, "OnePlus"));
+                //textView.setText(DataManager.getInstance().getData());
+                manager.connect(new Device(42, "OnePlus"));
                 textView.setText(manager.getName());
 
             }

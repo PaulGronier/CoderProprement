@@ -1,6 +1,7 @@
 package com.example.iem.coderproprement.activity;
 
-import com.example.iem.coderproprement.manager.SingletonButton;
+import com.example.iem.coderproprement.manager.DataManager;
+import com.example.iem.coderproprement.manager.DataManagerInterface;
 
 /**
  * Created by iem on 20/10/2017.
@@ -9,7 +10,7 @@ import com.example.iem.coderproprement.manager.SingletonButton;
 public class Application extends android.app.Application {
     private static Application application;
 
-    private SingletonButton manager;
+    private DataManagerInterface manager;
 
     public static Application application () {
         return application;
@@ -20,10 +21,10 @@ public class Application extends android.app.Application {
         super.onCreate();
         application = this;
 
-        manager = SingletonButton.getInstance();
+        manager = new DataManager();
     }
 
-    public SingletonButton getManager () {
+    public DataManagerInterface getManager () {
         return manager;
     }
 }
